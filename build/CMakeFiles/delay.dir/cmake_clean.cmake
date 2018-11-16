@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/delay.dir/init.o"
+  "CMakeFiles/delay.dir/test_driver.o"
   "../bin/delay.pdb"
   "../bin/delay"
 )

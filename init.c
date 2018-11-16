@@ -10,15 +10,23 @@
 #include <stdio.h>
 #include <bsp.h>
 
-#include "led.h"
 #include <pthread.h>
 #include <assert.h>
+
+#include <rtems/devfs.h>
+#include <errno.h>
+#include "test_driver.h"
+#include <fcntl.h>
+
+int fd;
 
 void * heart_beat(void * arg)
 {
   struct timeval time;
   struct timespec timeout;
   bool led_on = true;
+  rtems_status_code status;
+  char buf[10];
 
   gettimeofday(&time, NULL);
   timeout.tv_sec = time.tv_sec + 1;
@@ -26,8 +34,16 @@ void * heart_beat(void * arg)
     gettimeofday(&time, NULL);
     if(time.tv_sec - timeout.tv_sec >=1)
     {
-      if(led_on) LED_ON();
-      else LED_OFF();
+      if(led_on) //LED_ON();
+      {
+        status = write( fd, "data", 5 );
+        if( status == 5 ) puts( "attempt to write to /dev/test -- OK" );
+      }
+      else //LED_OFF();
+      {
+        status = read( fd, buf, 5 );
+        if( status == 0 ) puts( "attempt to read from /dev/test -- OK" );
+      }
       led_on = !led_on;
       timeout.tv_sec = time.tv_sec + 1;
     }
@@ -36,21 +52,28 @@ void * heart_beat(void * arg)
   return NULL;
 }
 
-
 void *POSIX_Init() 
 {
   rtems_status_code status;
 
-  puts( "\n\n test start" );
-
-  //LED_ON();
+  puts( " test start\n" );
+  
+  puts("try open\r\n");
+  fd = open( "/dev/test", O_RDWR );
+  if(fd != -1) puts( " /dev/test open OK!\n" );
+  else return NULL;
+ /*
+  puts("try write\r\n");
+  status = write( fd, "data", 5 );
+  if( status == 5 ) puts( "attempt to write to /dev/test -- OK" );
+ */
+  
   pthread_t child;
   if ( pthread_create( &child, NULL, heart_beat, NULL ))
     perror("Error on pthread_create");
   printf("<main>: Wait for child thread...\n");
   if ( pthread_join( child, NULL ))
     perror("Error on pthread_join");
-  return 0;
   
   status = rtems_task_delete( RTEMS_SELF );
 }
@@ -59,6 +82,12 @@ void *POSIX_Init()
 
 #define CONFIGURE_APPLICATION_NEEDS_CONSOLE_DRIVER
 #define CONFIGURE_APPLICATION_NEEDS_CLOCK_DRIVER
+#define CONFIGURE_APPLICATION_EXTRA_DRIVERS LED_DRIVER_TABLE_ENTRY
+
+#define CONFIGURE_MAXIMUM_DRIVERS 3
+#define CONFIGURE_MAXIMUM_DEVICES 10
+
+#define CONFIGURE_LIBIO_MAXIMUM_FILE_DESCRIPTORS 5
 
 #define CONFIGURE_MAXIMUM_POSIX_THREADS              10
 #define CONFIGURE_MAXIMUM_POSIX_CONDITION_VARIABLES  10

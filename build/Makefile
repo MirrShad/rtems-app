@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/andy/RTEMSspace/development/rtems/src/own-example
+CMAKE_SOURCE_DIR = /home/andy/RTEMSspace/development/rtems/src/SeerDIOBoard2.0
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/andy/RTEMSspace/development/rtems/src/own-example/build
+CMAKE_BINARY_DIR = /home/andy/RTEMSspace/development/rtems/src/SeerDIOBoard2.0/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/andy/RTEMSspace/development/rtems/src/own-example/build/CMakeFiles /home/andy/RTEMSspace/development/rtems/src/own-example/build/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/andy/RTEMSspace/development/rtems/src/SeerDIOBoard2.0/build/CMakeFiles /home/andy/RTEMSspace/development/rtems/src/SeerDIOBoard2.0/build/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/andy/RTEMSspace/development/rtems/src/own-example/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/andy/RTEMSspace/development/rtems/src/SeerDIOBoard2.0/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -138,6 +138,21 @@ init.s:
 	$(MAKE) -f CMakeFiles/delay.dir/build.make CMakeFiles/delay.dir/init.s
 .PHONY : init.s
 
+# target to build an object file
+test_driver.o:
+	$(MAKE) -f CMakeFiles/delay.dir/build.make CMakeFiles/delay.dir/test_driver.o
+.PHONY : test_driver.o
+
+# target to preprocess a source file
+test_driver.i:
+	$(MAKE) -f CMakeFiles/delay.dir/build.make CMakeFiles/delay.dir/test_driver.i
+.PHONY : test_driver.i
+
+# target to generate assembly for a file
+test_driver.s:
+	$(MAKE) -f CMakeFiles/delay.dir/build.make CMakeFiles/delay.dir/test_driver.s
+.PHONY : test_driver.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -150,6 +165,9 @@ help:
 	@echo "... init.o"
 	@echo "... init.i"
 	@echo "... init.s"
+	@echo "... test_driver.o"
+	@echo "... test_driver.i"
+	@echo "... test_driver.s"
 .PHONY : help
 
 

@@ -4,7 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/home/andy/RTEMSspace/development/rtems/src/own-example/init.c" "/home/andy/RTEMSspace/development/rtems/src/own-example/build/CMakeFiles/delay.dir/init.o"
+  "/home/andy/RTEMSspace/development/rtems/src/SeerDIOBoard2.0/init.c" "/home/andy/RTEMSspace/development/rtems/src/SeerDIOBoard2.0/build/CMakeFiles/delay.dir/init.o"
+  "/home/andy/RTEMSspace/development/rtems/src/SeerDIOBoard2.0/test_driver.c" "/home/andy/RTEMSspace/development/rtems/src/SeerDIOBoard2.0/build/CMakeFiles/delay.dir/test_driver.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 

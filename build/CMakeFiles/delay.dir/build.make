@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/andy/RTEMSspace/development/rtems/src/own-example
+CMAKE_SOURCE_DIR = /home/andy/RTEMSspace/development/rtems/src/SeerDIOBoard2.0
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/andy/RTEMSspace/development/rtems/src/own-example/build
+CMAKE_BINARY_DIR = /home/andy/RTEMSspace/development/rtems/src/SeerDIOBoard2.0/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/delay.dir/depend.make
@@ -59,16 +59,16 @@ include CMakeFiles/delay.dir/flags.make
 
 CMakeFiles/delay.dir/init.o: CMakeFiles/delay.dir/flags.make
 CMakeFiles/delay.dir/init.o: ../init.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/andy/RTEMSspace/development/rtems/src/own-example/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/delay.dir/init.o"
-	arm-rtems4.11-gcc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/delay.dir/init.o   -c /home/andy/RTEMSspace/development/rtems/src/own-example/init.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/andy/RTEMSspace/development/rtems/src/SeerDIOBoard2.0/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/delay.dir/init.o"
+	arm-rtems4.11-gcc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/delay.dir/init.o   -c /home/andy/RTEMSspace/development/rtems/src/SeerDIOBoard2.0/init.c
 
 CMakeFiles/delay.dir/init.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/delay.dir/init.i"
-	arm-rtems4.11-gcc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/andy/RTEMSspace/development/rtems/src/own-example/init.c > CMakeFiles/delay.dir/init.i
+	arm-rtems4.11-gcc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/andy/RTEMSspace/development/rtems/src/SeerDIOBoard2.0/init.c > CMakeFiles/delay.dir/init.i
 
 CMakeFiles/delay.dir/init.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/delay.dir/init.s"
-	arm-rtems4.11-gcc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/andy/RTEMSspace/development/rtems/src/own-example/init.c -o CMakeFiles/delay.dir/init.s
+	arm-rtems4.11-gcc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/andy/RTEMSspace/development/rtems/src/SeerDIOBoard2.0/init.c -o CMakeFiles/delay.dir/init.s
 
 CMakeFiles/delay.dir/init.o.requires:
 
@@ -81,17 +81,43 @@ CMakeFiles/delay.dir/init.o.provides: CMakeFiles/delay.dir/init.o.requires
 CMakeFiles/delay.dir/init.o.provides.build: CMakeFiles/delay.dir/init.o
 
 
+CMakeFiles/delay.dir/test_driver.o: CMakeFiles/delay.dir/flags.make
+CMakeFiles/delay.dir/test_driver.o: ../test_driver.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/andy/RTEMSspace/development/rtems/src/SeerDIOBoard2.0/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/delay.dir/test_driver.o"
+	arm-rtems4.11-gcc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/delay.dir/test_driver.o   -c /home/andy/RTEMSspace/development/rtems/src/SeerDIOBoard2.0/test_driver.c
+
+CMakeFiles/delay.dir/test_driver.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/delay.dir/test_driver.i"
+	arm-rtems4.11-gcc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/andy/RTEMSspace/development/rtems/src/SeerDIOBoard2.0/test_driver.c > CMakeFiles/delay.dir/test_driver.i
+
+CMakeFiles/delay.dir/test_driver.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/delay.dir/test_driver.s"
+	arm-rtems4.11-gcc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/andy/RTEMSspace/development/rtems/src/SeerDIOBoard2.0/test_driver.c -o CMakeFiles/delay.dir/test_driver.s
+
+CMakeFiles/delay.dir/test_driver.o.requires:
+
+.PHONY : CMakeFiles/delay.dir/test_driver.o.requires
+
+CMakeFiles/delay.dir/test_driver.o.provides: CMakeFiles/delay.dir/test_driver.o.requires
+	$(MAKE) -f CMakeFiles/delay.dir/build.make CMakeFiles/delay.dir/test_driver.o.provides.build
+.PHONY : CMakeFiles/delay.dir/test_driver.o.provides
+
+CMakeFiles/delay.dir/test_driver.o.provides.build: CMakeFiles/delay.dir/test_driver.o
+
+
 # Object files for target delay
 delay_OBJECTS = \
-"CMakeFiles/delay.dir/init.o"
+"CMakeFiles/delay.dir/init.o" \
+"CMakeFiles/delay.dir/test_driver.o"
 
 # External object files for target delay
 delay_EXTERNAL_OBJECTS =
 
 ../bin/delay: CMakeFiles/delay.dir/init.o
+../bin/delay: CMakeFiles/delay.dir/test_driver.o
 ../bin/delay: CMakeFiles/delay.dir/build.make
 ../bin/delay: CMakeFiles/delay.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/andy/RTEMSspace/development/rtems/src/own-example/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C executable ../bin/delay"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/andy/RTEMSspace/development/rtems/src/SeerDIOBoard2.0/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking C executable ../bin/delay"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/delay.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -100,6 +126,7 @@ CMakeFiles/delay.dir/build: ../bin/delay
 .PHONY : CMakeFiles/delay.dir/build
 
 CMakeFiles/delay.dir/requires: CMakeFiles/delay.dir/init.o.requires
+CMakeFiles/delay.dir/requires: CMakeFiles/delay.dir/test_driver.o.requires
 
 .PHONY : CMakeFiles/delay.dir/requires
 
@@ -108,6 +135,6 @@ CMakeFiles/delay.dir/clean:
 .PHONY : CMakeFiles/delay.dir/clean
 
 CMakeFiles/delay.dir/depend:
-	cd /home/andy/RTEMSspace/development/rtems/src/own-example/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/andy/RTEMSspace/development/rtems/src/own-example /home/andy/RTEMSspace/development/rtems/src/own-example /home/andy/RTEMSspace/development/rtems/src/own-example/build /home/andy/RTEMSspace/development/rtems/src/own-example/build /home/andy/RTEMSspace/development/rtems/src/own-example/build/CMakeFiles/delay.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/andy/RTEMSspace/development/rtems/src/SeerDIOBoard2.0/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/andy/RTEMSspace/development/rtems/src/SeerDIOBoard2.0 /home/andy/RTEMSspace/development/rtems/src/SeerDIOBoard2.0 /home/andy/RTEMSspace/development/rtems/src/SeerDIOBoard2.0/build /home/andy/RTEMSspace/development/rtems/src/SeerDIOBoard2.0/build /home/andy/RTEMSspace/development/rtems/src/SeerDIOBoard2.0/build/CMakeFiles/delay.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/delay.dir/depend
 
