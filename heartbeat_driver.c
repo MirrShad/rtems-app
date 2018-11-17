@@ -1,11 +1,5 @@
-/*  test_driver
+/*  heartBeatDriver_initialize
  *
- *  COPYRIGHT (c) 1989-2010.
- *  On-Line Applications Research Corporation (OAR).
- *
- *  The license and distribution terms for this file may be
- *  found in the file LICENSE in this distribution or at
- *  http://www.rtems.org/license/LICENSE.
  */
 
 #ifdef HAVE_CONFIG_H
@@ -13,7 +7,7 @@
 #endif
 
 #include <rtems.h>
-#include "test_driver.h"
+#include "heartbeat_driver.h"
 #include <rtems/libio.h>
 #include <rtems/devnull.h>
 #include <stdio.h>
@@ -38,7 +32,7 @@ static char initialized;
  *  Output parameters:
  *    rval       - RTEMS_SUCCESSFUL
  */
-rtems_device_driver testDriver_initialize(
+rtems_device_driver heartBeatDriver_initialize(
   rtems_device_major_number major,
   rtems_device_minor_number minor __attribute__((unused)),
   void *pargp __attribute__((unused))
@@ -76,7 +70,7 @@ rtems_device_driver testDriver_initialize(
  *  Output parameters:
  *    rval       - RTEMS_SUCCESSFUL
  */
-rtems_device_driver testDriver_open(
+rtems_device_driver heartBeatDriver_open(
   rtems_device_major_number major __attribute__((unused)),
   rtems_device_minor_number minor __attribute__((unused)),
   void *pargp __attribute__((unused))
@@ -98,7 +92,7 @@ rtems_device_driver testDriver_open(
  *  Output parameters:
  *    rval       - RTEMS_SUCCESSFUL
  */
-rtems_device_driver testDriver_close(
+rtems_device_driver heartBeatDriver_close(
   rtems_device_major_number major __attribute__((unused)),
   rtems_device_minor_number minor __attribute__((unused)),
   void *pargp __attribute__((unused))
@@ -119,12 +113,13 @@ rtems_device_driver testDriver_close(
  *  Output parameters:
  *    rval       - RTEMS_SUCCESSFUL
  */
-rtems_device_driver testDriver_read(
+rtems_device_driver heartBeatDriver_read(
   rtems_device_major_number major __attribute__((unused)),
   rtems_device_minor_number minor __attribute__((unused)),
   void *pargp
 )
 {
+/*
   rtems_libio_rw_args_t *rw_args = (rtems_libio_rw_args_t *) pargp;
 
   if ( rw_args ) {
@@ -138,7 +133,7 @@ rtems_device_driver testDriver_read(
       return RTEMS_NOT_IMPLEMENTED;
     }
   }
-  
+*/
   return RTEMS_SUCCESSFUL;
 }
 
@@ -154,7 +149,7 @@ rtems_device_driver testDriver_read(
  *  Output parameters:
  *    rval       - RTEMS_SUCCESSFUL
  */
-rtems_device_driver testDriver_write(
+rtems_device_driver heartBeatDriver_write(
   rtems_device_major_number major __attribute__((unused)),
   rtems_device_minor_number minor __attribute__((unused)),
   void *pargp
@@ -193,7 +188,7 @@ rtems_device_driver testDriver_write(
  *    rval       - RTEMS_SUCCESSFUL
  */
 
-rtems_device_driver testDriver_control(
+rtems_device_driver heartBeatDriver_control(
   rtems_device_major_number major __attribute__((unused)),
   rtems_device_minor_number minor __attribute__((unused)),
   void *pargp __attribute__((unused))

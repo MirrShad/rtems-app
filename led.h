@@ -16,8 +16,8 @@
 stm32f4_gpio_config led3config =
 {
 	.fields={
-		.pin_first = STM32F4_GPIO_PIN(6, 10),
-	.pin_last = STM32F4_GPIO_PIN(6, 10),
+		.pin_first = STM32F4_GPIO_PIN(6, 9),
+	.pin_last = STM32F4_GPIO_PIN(6, 9),
 	.mode = STM32F4_GPIO_MODE_OUTPUT,
 	.otype = STM32F4_GPIO_OTYPE_PUSH_PULL,
 	.ospeed = STM32F4_GPIO_OSPEED_2_MHZ,
@@ -28,7 +28,7 @@ stm32f4_gpio_config led3config =
 };
 
 #define LED_INIT() stm32f4_gpio_set_config(&led3config)
-#define LED_ON() stm32f4_gpio_set_output(STM32F4_GPIO_PIN(6,10), 1)
-#define LED_OFF() stm32f4_gpio_set_output(STM32F4_GPIO_PIN(6,10), 0)
+#define LED_ON() stm32f4_gpio_set_output(STM32F4_GPIO_PIN(6,9), 1)
+#define LED_OFF() stm32f4_gpio_set_output(STM32F4_GPIO_PIN(6,9), 0)
 
 #endif

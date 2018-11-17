@@ -15,7 +15,7 @@
 
 #include <rtems/devfs.h>
 #include <errno.h>
-#include "test_driver.h"
+#include "heartbeat_driver.h"
 #include <fcntl.h>
 
 int fd;
@@ -41,12 +41,12 @@ void * heart_beat(void * arg)
       if(led_on) //LED_ON();
       {
         status = write( fd, "on", 5 );
-        if( status == 5 ) puts( "LED ON -- OK" );
+        //if( status == 5 ) puts( "LED ON -- OK" );
       }
       else //LED_OFF();
       {
         status = write( fd, "off", 5 );
-        if( status == 5 ) puts( "LED OFF -- OK" );
+        //if( status == 5 ) puts( "LED OFF -- OK" );
       }
       led_on = !led_on;
       timeout.tv_sec = time.tv_sec + 1;
@@ -66,11 +66,6 @@ void *POSIX_Init()
   fd = open( "/dev/test", O_RDWR );
   if(fd != -1) puts( " /dev/test open OK!\n" );
   else return NULL;
- /*
-  puts("try write\r\n");
-  status = write( fd, "data", 5 );
-  if( status == 5 ) puts( "attempt to write to /dev/test -- OK" );
- */
   
   pthread_t child;
   if ( pthread_create( &child, NULL, heart_beat, NULL ))
@@ -86,7 +81,7 @@ void *POSIX_Init()
 
 #define CONFIGURE_APPLICATION_NEEDS_CONSOLE_DRIVER
 #define CONFIGURE_APPLICATION_NEEDS_CLOCK_DRIVER
-#define CONFIGURE_APPLICATION_EXTRA_DRIVERS LED_DRIVER_TABLE_ENTRY
+#define CONFIGURE_APPLICATION_EXTRA_DRIVERS HEART_BEAT_DRIVER_TABLE_ENTRY
 
 #define CONFIGURE_MAXIMUM_DRIVERS 3
 #define CONFIGURE_MAXIMUM_DEVICES 10

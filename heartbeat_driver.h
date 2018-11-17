@@ -15,41 +15,41 @@
 extern "C" {
 #endif
 
-#define LED_DRIVER_TABLE_ENTRY \
-  { testDriver_initialize, testDriver_open, testDriver_close, testDriver_read, \
-    testDriver_write, testDriver_control }
+#define HEART_BEAT_DRIVER_TABLE_ENTRY \
+  { heartBeatDriver_initialize, heartBeatDriver_open, heartBeatDriver_close, heartBeatDriver_read, \
+    heartBeatDriver_write, heartBeatDriver_control }
 
-rtems_device_driver testDriver_initialize(
+rtems_device_driver heartBeatDriver_initialize(
   rtems_device_major_number,
   rtems_device_minor_number,
   void *
 );
 
-rtems_device_driver testDriver_open(
+rtems_device_driver heartBeatDriver_open(
   rtems_device_major_number,
   rtems_device_minor_number,
   void *
 );
 
-rtems_device_driver testDriver_close(
+rtems_device_driver heartBeatDriver_close(
   rtems_device_major_number,
   rtems_device_minor_number,
   void *
 );
 
-rtems_device_driver testDriver_read(
+rtems_device_driver heartBeatDriver_read(
   rtems_device_major_number,
   rtems_device_minor_number,
   void *
 );
 
-rtems_device_driver testDriver_write(
+rtems_device_driver heartBeatDriver_write(
   rtems_device_major_number,
   rtems_device_minor_number,
   void *
 );
 
-rtems_device_driver testDriver_control(
+rtems_device_driver heartBeatDriver_control(
   rtems_device_major_number,
   rtems_device_minor_number,
   void *
