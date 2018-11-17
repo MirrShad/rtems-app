@@ -29,20 +29,24 @@ void * heart_beat(void * arg)
   char buf[10];
 
   gettimeofday(&time, NULL);
-  timeout.tv_sec = time.tv_sec + 1;
+  long temp;
+  temp = time.tv_usec * 1000 + 250000000;
+  timeout.tv_nsec = temp%1000000000;
+  timeout.tv_sec = time.tv_sec + temp/1000000000;
+  
   do{
     gettimeofday(&time, NULL);
-    if(time.tv_sec - timeout.tv_sec >=1)
+    if(time.tv_usec * 1000 - timeout.tv_nsec >= 0 && timeout.tv_sec == time.tv_sec)
     {
       if(led_on) //LED_ON();
       {
         status = write( fd, "on", 5 );
-        if( status == 5 ) puts( "attempt to write to /dev/test -- OK" );
+        if( status == 5 ) puts( "LED ON -- OK" );
       }
       else //LED_OFF();
       {
         status = write( fd, "off", 5 );
-        if( status == 0 ) puts( "attempt to read from /dev/test -- OK" );
+        if( status == 5 ) puts( "LED OFF -- OK" );
       }
       led_on = !led_on;
       timeout.tv_sec = time.tv_sec + 1;
