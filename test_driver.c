@@ -19,6 +19,7 @@
 #include <stdio.h>
 #include "led.h"
 #include <bsp.h>
+#include <string.h>
 /* 
  * The test driver routines are mostly derived from the null driver routines.
  */
@@ -164,7 +165,10 @@ rtems_device_driver testDriver_write(
   if ( rw_args ) {
     if( rw_args->count == 5 )
     {
-      LED_ON();
+      if(0 == strcmp(rw_args->buffer,"on")) //puts("write equals data\r\n");
+        LED_ON();
+      if(0 == strcmp(rw_args->buffer,"off")) //puts("write equals data\r\n");
+        LED_OFF();
       return null_write( 0, 0, pargp );
     }
     else {

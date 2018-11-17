@@ -36,12 +36,12 @@ void * heart_beat(void * arg)
     {
       if(led_on) //LED_ON();
       {
-        status = write( fd, "data", 5 );
+        status = write( fd, "on", 5 );
         if( status == 5 ) puts( "attempt to write to /dev/test -- OK" );
       }
       else //LED_OFF();
       {
-        status = read( fd, buf, 5 );
+        status = write( fd, "off", 5 );
         if( status == 0 ) puts( "attempt to read from /dev/test -- OK" );
       }
       led_on = !led_on;
